@@ -15,39 +15,38 @@ export const Header = () => {
     const { abrir, productos } = useCarritoStore()
 
     return (
-        <header className="px-4 py-3  text-white">  
+        <header className="px-3 py-2 text-white">  
             <div className='flex justify-between items-center'>
-                    <div className='flex items-center gap-3'>
-                        <Image src="/images/icon.png" alt="logo" width={50} height={50} className="rounded-md object-contain"/>
-                        <h1 className='text-2xl font-bold text-white'>{rotiseria.nombre}</h1>
+                    <div className='flex items-center gap-2.5'>
+                        <Image src="/images/icon.png" alt="logo" width={40} height={40} className="rounded-md object-contain"/>
+                        <h1 className='text-xl font-bold text-white'>{rotiseria.nombre}</h1>
                     </div>
                     <div className="relative cursor-pointer" onClick={abrir}>
-                        <div className="p-2 bg-secondary text-primary rounded-full hover:scale-105 transition-transform flex items-center justify-center">
-                            <MdOutlineShoppingCart size={28} />
+                        <div className="p-1.5 bg-secondary text-primary rounded-full hover:scale-105 transition-transform flex items-center justify-center">
+                            <MdOutlineShoppingCart size={22} />
                         </div>
                         {totalProductos(productos) > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-neutral">
+                            <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-neutral">
                                 {totalProductos(productos)}
                             </span>
                         )}
                     </div>
             </div>
 
-            {/* Hero Banner / Sección Principal */}
-            <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Hero Banner / Sección Principal (Más Compacto) */}
+            <div className="mt-3 flex flex-col md:flex-row items-center justify-between gap-4">
                 {/* Lado Izquierdo: Texto y Botones */}
-                <div className="flex-1 space-y-6">
-                    <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white uppercase">
+                <div className="flex-1 space-y-2">
+                    <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white uppercase">
                         Carrito Online
                     </h2>
-                    <div className="flex flex-wrap gap-4 pt-4">
-                        
+                    <div className="flex flex-wrap gap-2 pt-1">
                         <ButtonPrimary text='Productos' type='primary' action={() => {}} />
                     </div>
                 </div>
 
-                {/* Lado Derecho: Tarjeta con Imagen de Fondo slide.png y Overlay de Horarios */}
-                <div className="relative w-full md:w-112.5 h-55 rounded-3xl overflow-hidden shadow-xl flex items-center justify-center p-4">
+                {/* Lado Derecho: Tarjeta con Imagen de Fondo y Overlay de Horarios */}
+                <div className="relative w-full md:w-80 h-36 rounded-2xl overflow-hidden shadow-lg flex items-center justify-center p-2">
                     <Image
                         src="/slide.png"
                         alt="Hamburguesa Sabor Urbano"
@@ -55,20 +54,20 @@ export const Header = () => {
                         className="object-cover"
                         priority
                     />
-                    {/* Overlay semitransparente color rojo/naranja estilo el diseño */}
-                    <div className="absolute inset-2 bg-primary/75 rounded-2xl backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-4 border border-blue-400/80">
-                        <h3 className="text-xl font-bold text-white mb-2">Horarios de atención</h3>
+                    {/* Overlay semitransparente color rojo/naranja */}
+                    <div className="absolute inset-1.5 bg-primary/75 rounded-xl backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-2 border border-blue-400/80">
+                        <h3 className="text-sm font-bold text-white mb-1">Horarios de atención</h3>
                         
-                        <div className="space-y-2 w-full max-w-xs">
+                        <div className="space-y-1 w-full max-w-xs">
                             <div>
-                                <p className="text-xs font-semibold text-white mb-1">Lunes a Jueves</p>
-                                <span className="inline-block bg-white text-primary font-bold text-xs px-4 py-1 rounded-full shadow">
+                                <p className="text-[10px] font-semibold text-white">Lunes a Jueves</p>
+                                <span className="inline-block bg-white text-primary font-bold text-[11px] px-3 py-0.5 rounded-full shadow">
                                     19hs a 23:30hs
                                 </span>
                             </div>
                             <div>
-                                <p className="text-xs font-semibold text-white mb-1">Viernes y Sábados</p>
-                                <span className="inline-block bg-white text-primary font-bold text-xs px-4 py-1 rounded-full shadow">
+                                <p className="text-[10px] font-semibold text-white">Viernes y Sábados</p>
+                                <span className="inline-block bg-white text-primary font-bold text-[11px] px-3 py-0.5 rounded-full shadow">
                                     19hs a 00:30hs
                                 </span>
                             </div>
@@ -78,15 +77,15 @@ export const Header = () => {
             </div>
 
             {/* Barra Inferior de Información (Teléfono y Dirección) */}
-            <div className="mt-8 flex">
-                <div className="w-full justify-between bg-[#171717] border border-blue-500/70 rounded-t-3xl rounded-b-none px-6 py-3 flex flex-col sm:flex-row items-center gap-6 shadow-[0_-4px_20px_rgba(247,69,17,0.3)]">
-                    <div className="flex items-center gap-3">
-                        <FaWhatsapp size={22} className="text-white transform -rotate-12" />
-                        <span className="text-white font-bold text-base tracking-wide">{rotiseria.whatsapp}</span>
+            <div className="mt-4 flex">
+                <div className="w-full justify-between bg-[#171717] border border-blue-500/70 rounded-t-2xl rounded-b-none px-4 py-2 flex flex-col sm:flex-row items-center gap-3 shadow-[0_-3px_15px_rgba(247,69,17,0.25)]">
+                    <div className="flex items-center gap-2">
+                        <FaWhatsapp size={18} className="text-white transform -rotate-12" />
+                        <span className="text-white font-bold text-sm tracking-wide">{rotiseria.whatsapp}</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                        <AiOutlineHome size={24} className="text-white" />
-                        <span className="text-white font-semibold text-sm sm:text-base">{rotiseria.direccion}</span>
+                    <div className="flex items-center gap-2">
+                        <AiOutlineHome size={18} className="text-white" />
+                        <span className="text-white font-medium text-xs sm:text-sm">{rotiseria.direccion}</span>
                     </div>
                 </div>
             </div>

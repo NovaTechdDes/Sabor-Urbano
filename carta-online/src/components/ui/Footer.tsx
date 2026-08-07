@@ -4,28 +4,29 @@ import { CiHome } from 'react-icons/ci'
 import { MdOutlineShoppingCart } from 'react-icons/md'
 import { totalProductos } from '../../helpers/totalProductos'
 import rotiseria from '../../../rotiseria.config'
+import { SiHoppscotch } from 'react-icons/si'
 
 export const Footer = () => {
 
-  const {productos, abierto, abrir} = useCarritoStore();
+  const {productos, abierto, abrir, total} = useCarritoStore();
+
+  const totalCarrito = total();
 
   return (
-    <footer className="flex justify-center flex-col md:flex-row bottom-0  w-full absolute bg-[#0f172a] " style={{backgroundColor: rotiseria.colorPrimario}}>
-        <div className='flex justify-center gap-16 md:ml-auto mt-2'>
-          <div className={`flex justify-center flex-col items-center gap-1 cursor-pointer`}>
-            <CiHome size={20} className={`${!abierto ? 'text-yellow-400' : 'text-gray-500'}`}/>
-            <p className={`${!abierto ? 'text-yellow-400' : 'text-gray-500'}`}>Sabor Urbano</p> 
-          </div>
-          <div className="flex justify-center flex-col items-center gap-1 cursor-pointer" onClick={abrir}>
-            {productos.length > 0 && <p className='ml-5 p-1 text-black text-center bg-yellow-400 rounded-full'>{totalProductos(productos)}</p>}
-            <MdOutlineShoppingCart size={20} className={`${abierto ? 'text-yellow-400' : 'text-gray-500'}`}/>
-            <p className={`${abierto ? 'text-yellow-400' : 'text-gray-500'}`}>{totalProductos(productos)}</p>
-          </div>
+    <footer className="fixed bottom-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+      <button
+        onClick={abrir}
+        className="pointer-events-auto w-full max-w-md bg-primary hover:bg-primary/90 active:scale-[0.98] text-white font-semibold py-3.5 px-6 rounded-full flex items-center justify-between shadow-[0_10px_25px_rgba(247,69,17,0.4)] transition-all duration-300 cursor-pointer border border-primary/20"
+      >
+        <div className="flex items-center gap-3">
+          <MdOutlineShoppingCart size={24} className="text-white shrink-0" />
+          <span className="text-lg font-bold tracking-wide">Ver Carrito</span>
         </div>
 
-        <div className='md:ml-auto mt-3 mr-2 items-center flex justify-center'>
-          <a className='text-center text-white text-xs' href="https://www.agustin-lorenzatto.com.ar/">Desarrollado por NovaTech</a>
-        </div>
-      </footer>
+        <span className="text-lg font-extrabold tracking-tight">
+          ${totalCarrito.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+        </span>
+      </button>
+    </footer>
   )
 }

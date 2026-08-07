@@ -48,7 +48,7 @@ export default function Home() {
         <Productos value={value} />
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
 
       {abierto && <Carrito />}
     </main>
