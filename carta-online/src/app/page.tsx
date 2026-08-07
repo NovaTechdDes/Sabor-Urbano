@@ -1,18 +1,17 @@
-'use client'
-import Buscador from "@/components/Producto/Buscador";
-import rotiseria from "../../rotiseria.config";
-import { Header } from "@/components/ui/Header";
-import { Rubros } from "@/components/Rubros";
-import { Productos } from "@/components/Productos";
-import { Footer } from "@/components/ui/Footer";
-import { Carrito } from "@/components/Carrito";
-import { useCarritoStore } from "@/store/useCarritoStore";
-import { useEffect, useState } from "react";
-import { Analytics } from "@vercel/analytics/next"
-import { useVariable } from "@/hooks/useVariable";
-import { ModalPaginaCerrada } from "@/components/ModalPaginaCerrada";
-import { useCartaEmpanada } from "@/hooks/useCartaEmpanada";
-
+'use client';
+import Buscador from '@/components/Producto/Buscador';
+import rotiseria from '../../rotiseria.config';
+import { Header } from '@/components/ui/Header';
+import { Rubros } from '@/components/Rubros';
+import { Productos } from '@/components/Productos';
+import { Footer } from '@/components/ui/Footer';
+import { Carrito } from '@/components/Carrito';
+import { useCarritoStore } from '@/store/useCarritoStore';
+import { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/next';
+import { useVariable } from '@/hooks/useVariable';
+import { ModalPaginaCerrada } from '@/components/ModalPaginaCerrada';
+import { useCartaEmpanada } from '@/hooks/useCartaEmpanada';
 
 export default function Home() {
   const { startTraerCarta } = useCartaEmpanada();
@@ -29,28 +28,30 @@ export default function Home() {
   }, []);
 
   if (variable?.paginaWebAbierto === false) {
-    return <ModalPaginaCerrada />
-
+    return <ModalPaginaCerrada />;
   }
 
   return (
-    <main className="h-screen min-w-screen flex flex-col bg-neutral">
+    <main className="min-h-screen w-full flex flex-col bg-neutral">
       <Analytics />
-      <div className="pt-0 w-full">
+      <div className="pt-0 w-full flex-1">
         <div className="mx-3 md:mx-7">
           <Header />
-
-          <Buscador value={value} setValue={setValue} />
-
-          
         </div>
 
-        <Productos value={value} />
+        {/* Sección desde el buscador hacia abajo: responde al tema claro/oscuro */}
+        <div className="bg-white dark:bg-neutral transition-colors duration-200 min-h-screen pt-1 pb-10">
+          <div className="mx-3 md:mx-7">
+            <Buscador value={value} setValue={setValue} />
+          </div>
+
+          <Productos value={value} />
+        </div>
       </div>
 
       <Footer />
 
       {abierto && <Carrito />}
     </main>
-  )
+  );
 }

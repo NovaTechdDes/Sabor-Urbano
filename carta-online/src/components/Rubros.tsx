@@ -36,8 +36,8 @@ export const Rubros = () => {
                         key={seccion?.nombre} 
                         className={`px-5 py-2 rounded-full cursor-pointer transition-all duration-200 whitespace-nowrap font-medium text-sm sm:text-base ${
                             isActive 
-                                ? 'bg-primary text-white shadow-md' 
-                                : 'bg-black text-white hover:bg-neutral-800'
+                                ? 'bg-primary text-white shadow-md shadow-primary/20' 
+                                : 'bg-[#181818] dark:bg-[#181818] text-white hover:bg-[#252525] border border-neutral-800'
                         }`}
                     >
                         <p translate='no'>{seccion?.nombre}</p>

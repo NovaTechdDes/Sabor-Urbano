@@ -55,7 +55,7 @@ export const Header = () => {
                         priority
                     />
                     {/* Overlay semitransparente color rojo/naranja */}
-                    <div className="absolute inset-1.5 bg-primary/75 rounded-xl backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-2 border border-blue-400/80">
+                    <div className="absolute inset-1.5 bg-primary/75 rounded-xl backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-2 border border-white/20">
                         <h3 className="text-sm font-bold text-white mb-1">Horarios de atención</h3>
                         
                         <div className="space-y-1 w-full max-w-xs">
@@ -78,13 +78,13 @@ export const Header = () => {
 
             {/* Barra Inferior de Información (Teléfono y Dirección) */}
             <div className="mt-4 flex">
-                <div className="w-full justify-between bg-[#171717] border border-blue-500/70 rounded-t-2xl rounded-b-none px-4 py-2 flex flex-col sm:flex-row items-center gap-3 shadow-[0_-3px_15px_rgba(247,69,17,0.25)]">
+                <div className="w-full justify-between bg-[#171717] border border-neutral-800 rounded-t-2xl rounded-b-none px-4 py-3 flex flex-col sm:flex-row items-center gap-3 shadow-[0_-4px_20px_rgba(247,69,17,0.15)]">
                     <div className="flex items-center gap-2">
-                        <FaWhatsapp size={18} className="text-white transform -rotate-12" />
+                        <FaWhatsapp size={18} className="text-primary transform -rotate-12" />
                         <span className="text-white font-bold text-sm tracking-wide">{rotiseria.whatsapp}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <AiOutlineHome size={18} className="text-white" />
+                        <AiOutlineHome size={18} className="text-primary" />
                         <span className="text-white font-medium text-xs sm:text-sm">{rotiseria.direccion}</span>
                     </div>
                 </div>
