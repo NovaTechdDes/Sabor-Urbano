@@ -9,26 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.5.0",
-    "axios": "^1.11.0",
-    "mongoose": "^8.16.5",
-    "next": "16.0.7",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
-    "react-icons": "^5.5.0",
-    "sweetalert2": "^11.22.2",
-    "zustand": "^5.0.6"
+    "@vercel/analytics": "^1.6.1",
+    "axios": "^1.19.0",
+    "mongoose": "^8.24.2",
+    "next": "16.3.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-icons": "^5.7.0",
+    "sweetalert2": "^11.26.25",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@eslint/eslintrc": "^3.3.6",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^20.19.43",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
-    "eslint": "^9",
+    "eslint": "^9.39.5",
     "eslint-config-next": "16.0.7",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
   },
   "overrides": {
     "@types/react": "19.2.7",

@@ -2,8 +2,8 @@ import { useCarritoStore } from '@/store/useCarritoStore'
 import React from 'react'
 import { CiHome } from 'react-icons/ci'
 import { MdOutlineShoppingCart } from 'react-icons/md'
-import { totalProductos } from '../helpers/totalProductos'
-import rotiseria from '../../rotiseria.config'
+import { totalProductos } from '../../helpers/totalProductos'
+import rotiseria from '../../../rotiseria.config'
 
 export const Footer = () => {
 

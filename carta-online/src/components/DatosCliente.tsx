@@ -10,7 +10,7 @@ import { LuCreditCard, LuTruck } from "react-icons/lu";
 import { BsPerson } from "react-icons/bs";
 
 import Swal from "sweetalert2";
-import { Input } from "./Input";
+import { Input } from "./ui/Input";
 import { enviarMensajeWhatsApp } from "@/helpers/enviarMensajeWhatsApp";
 
 const initialForm = {

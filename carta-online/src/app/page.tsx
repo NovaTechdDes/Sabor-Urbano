@@ -1,10 +1,10 @@
 'use client'
-import Buscador from "@/components/Buscador";
+import Buscador from "@/components/Producto/Buscador";
 import rotiseria from "../../rotiseria.config";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/ui/Header";
 import { Rubros } from "@/components/Rubros";
 import { Productos } from "@/components/Productos";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/ui/Footer";
 import { Carrito } from "@/components/Carrito";
 import { useCarritoStore } from "@/store/useCarritoStore";
 import { useEffect, useState } from "react";
@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   return (
-    <main className="h-screen min-w-screen flex flex-col" style={{ backgroundColor: rotiseria.colorPrimario }}>
+    <main className="h-screen min-w-screen flex flex-col bg-neutral">
       <Analytics />
       <div className="pt-0 w-full">
         <div className="mx-3 md:mx-7">
@@ -42,13 +42,13 @@ export default function Home() {
 
           <Buscador value={value} setValue={setValue} />
 
-          <Rubros />
+          
         </div>
 
         <Productos value={value} />
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
 
       {abierto && <Carrito />}
     </main>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductoCard from "./ProductoCard";
+import ProductoCard from "./Producto/ProductoCard";
 import { useProductos } from "@/hooks/useProducto";
 import { Producto } from "@/store/useProductoStore";
 import { useSecciones } from "@/hooks/useSeccion";

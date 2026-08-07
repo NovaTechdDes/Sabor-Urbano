@@ -26,13 +26,24 @@ export const Rubros = () => {
     }
 
   return (
-    <div className='flex gap-5 overflow-x-auto pb-2'>
+    <div className='w-full flex gap-3 overflow-x-auto pb-2 no-scrollbar scroll-smooth touch-pan-x'>
         {
-            secciones.map((seccion) => (
-                <div onClick={() => handleSeccion(seccion)} key={seccion?.nombre} className={`${seccionActive?.nombre === seccion?.nombre ? 'bg-yellow-400 hover:bg-yellow-500' : 'bg-gray-400'} p-1 rounded-sm mt-2 hover:bg-slate-500 cursor-pointer`}>
-                    <p translate='no' className='text-gray-700 text-xs whitespace-nowrap font-bold hover:text-white'>{seccion?.nombre}</p>
-                </div>
-            ))
+            secciones.map((seccion) => {
+                const isActive = seccionActive?.nombre === seccion?.nombre;
+                return (
+                    <div 
+                        onClick={() => handleSeccion(seccion)} 
+                        key={seccion?.nombre} 
+                        className={`px-5 py-2 rounded-full cursor-pointer transition-all duration-200 whitespace-nowrap font-medium text-sm sm:text-base ${
+                            isActive 
+                                ? 'bg-primary text-white shadow-md' 
+                                : 'bg-black text-white hover:bg-neutral-800'
+                        }`}
+                    >
+                        <p translate='no'>{seccion?.nombre}</p>
+                    </div>
+                )
+            })
         }
     </div>
     
