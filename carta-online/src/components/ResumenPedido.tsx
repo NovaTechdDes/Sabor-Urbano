@@ -6,12 +6,17 @@ import { useCarritoStore } from '@/store/useCarritoStore'
 const ResumenPedido = () => {
     const { total, productos } = useCarritoStore();
   return (
-    <div className='space-y-4'>
+    <div className='flex flex-col h-full bg-neutral-50 dark:bg-neutral-900/60 p-4 sm:p-5 rounded-3xl border border-neutral-200 dark:border-neutral-800 space-y-4'>
 
-        <h3 className='text-yellow-400 text-xl text-center'>Resumen del Pedido</h3>
-        <hr className='text-gray-700 '/>
+        <div className='flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3'>
+          <h3 className='text-base sm:text-lg font-extrabold text-neutral-900 dark:text-white uppercase tracking-wider'>Resumen del Pedido</h3>
+          <span className='bg-primary/10 text-primary text-xs font-bold px-2.5 py-1 rounded-full border border-primary/20'>
+            {productos.length} {productos.length === 1 ? 'Producto' : 'Productos'}
+          </span>
+        </div>
 
-        <div className='overflow-y-auto max-h-[350px]'>
+        {/* Lista de Productos con scroll personalizable */}
+        <div className='overflow-y-auto max-h-[300px] sm:max-h-[340px] space-y-3 pr-1 no-scrollbar'>
             {
                 productos.map(producto => (
                     <ProductoItemCarrito {...producto} key={producto.producto?._id}/>
@@ -19,30 +24,26 @@ const ResumenPedido = () => {
             }
         </div>
 
-        <hr className='text-gray-700 '/>
-
-        <div>
-            <div className='flex justify-between my-2'>
-                <p className='text-sm text-white'>Cantidad de Productos: </p>
-                <p className='text-white'>{productos.length} Items</p>
+        {/* Desglose de totales */}
+        <div className='border-t border-neutral-200 dark:border-neutral-800 pt-4 space-y-2 mt-auto'>
+            <div className='flex justify-between items-center text-xs sm:text-sm text-neutral-600 dark:text-neutral-400'>
+                <span>Variedad de Items:</span>
+                <span className='font-semibold text-neutral-900 dark:text-white'>{productos.length}</span>
             </div>
 
-            <hr className='text-gray-700 '/>
-
-            <div className='flex justify-between my-2'>
-                <p className='text-md text-white'>Subtotal: </p>
-                <p className='text-yellow-400 font-bold text-xl'>${total().toFixed(2)}</p>
+            <div className='flex justify-between items-center text-xs sm:text-sm text-neutral-600 dark:text-neutral-400'>
+                <span>Subtotal:</span>
+                <span className='font-bold text-neutral-900 dark:text-white'>${total().toFixed(0)}</span>
             </div>
 
-            <div className='flex justify-between my-2'>
-                <p className='text-lg text-white font-bold'>Total: </p>
-                <p className='text-yellow-400 font-bold text-xl'>${total().toFixed(2)}</p>
+            <div className='flex justify-between items-center pt-2 border-t border-neutral-200/60 dark:border-neutral-800/80'>
+                <span className='text-base sm:text-lg font-black text-neutral-900 dark:text-white'>TOTAL:</span>
+                <span className='text-xl sm:text-2xl font-black text-primary dark:text-secondary'>${total().toFixed(0)}</span>
             </div>
 
-
-            <div>
-                <p className='text-white'>*El envio puede tener cargos extras</p>
-            </div>
+            <p className='text-[11px] text-neutral-500 dark:text-neutral-400 text-center italic pt-1'>
+                * El envío a domicilio puede incluir cargos adicionales según la zona.
+            </p>
         </div>
 
     </div>

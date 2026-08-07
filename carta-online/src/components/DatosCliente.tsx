@@ -116,23 +116,27 @@ export const DatosCliente = () => {
   };
 
   return (
-    <div className="flex flex-col items-starts space-y-4">
-      <h3 className="text-yellow-400 text-md md:text-lg text-start">
-        Datos de entregar (Obligatorio)
-      </h3>
-      <hr className="text-gray-700" />
-      <form className="w-full" onSubmit={handleSubmit}>
-        <div className="mt-3">
-          <div className="flex gap-5 items-center">
-            <BsPerson className="text-white" />
-            <label className="text-white" htmlFor="">
-              Nombre *
+    <div className="flex flex-col space-y-4 text-left">
+      <div className="border-b border-neutral-200 dark:border-neutral-800 pb-3">
+        <h3 className="text-base sm:text-lg font-extrabold text-neutral-900 dark:text-white uppercase tracking-wider">
+          Datos de Entrega (Obligatorio)
+        </h3>
+        <p className="text-xs text-neutral-500 dark:text-neutral-400">Completa la información para que podamos procesar tu pedido.</p>
+      </div>
+
+      <form className="w-full space-y-4" onSubmit={handleSubmit}>
+        {/* Nombre */}
+        <div>
+          <div className="flex gap-2 items-center mb-1">
+            <BsPerson className="text-primary text-base" />
+            <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="nombre">
+              Nombre y Apellido *
             </label>
           </div>
 
           <Input
             type="text"
-            placeholder="Ingrese su nombre"
+            placeholder="Ej. Juan Pérez"
             name="nombre"
             value={nombre}
             onChange={onInputChange}
@@ -145,17 +149,18 @@ export const DatosCliente = () => {
           />
         </div>
 
-        <div className="mt-3">
-          <div className="flex gap-2 items-center">
-            <CiPhone className="text-white" />
-            <label className="text-white" htmlFor="telefono">
-              Telefono *
+        {/* Teléfono */}
+        <div>
+          <div className="flex gap-2 items-center mb-1">
+            <CiPhone className="text-primary text-base font-bold" />
+            <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="telefono">
+              Teléfono de Contacto *
             </label>
           </div>
 
           <Input
             type="tel"
-            placeholder="Ingrese su Telefono"
+            placeholder="Ej. 3456123456"
             ref={telefonoRef as React.RefObject<HTMLInputElement>}
             name="telefono"
             value={telefono}
@@ -164,57 +169,59 @@ export const DatosCliente = () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Tipo de Pago y Modalidad */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
-            <div className="flex gap-5 items-center">
-              <LuCreditCard className="text-white" />
-              <label className="text-white" htmlFor="tipo_pago">
-                Tipo de Pago *
+            <div className="flex gap-2 items-center mb-1.5">
+              <LuCreditCard className="text-primary text-base" />
+              <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="tipo_pago">
+                Forma de Pago *
               </label>
             </div>
             <select
-              className="bg-slate-700 text-white p-2 rounded-lg border border-gray-500 w-full "
+              className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700/80 w-full text-xs sm:text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
               name="tipo_pago"
               id="tipo_pago"
               value={tipo_pago}
               onChange={onInputChange}
             >
-              <option value="EFECTIVO">Efectivo</option>
-              <option value="TRANSFERENCIA">Transferencia</option>
+              <option value="EFECTIVO">💵 Efectivo</option>
+              <option value="TRANSFERENCIA">💳 Transferencia</option>
             </select>
           </div>
 
           <div>
-            <div className="flex gap-5 items-center">
-              <LuTruck className="text-white" />
-              <label className="text-white" htmlFor="envio">
+            <div className="flex gap-2 items-center mb-1.5">
+              <LuTruck className="text-primary text-base" />
+              <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="envio">
                 Modalidad *
               </label>
             </div>
             <select
-              className="bg-slate-700 text-white p-2 rounded-lg border border-gray-500 w-full"
+              className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700/80 w-full text-xs sm:text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
               name="envio"
               id="envio"
               value={envio}
               onChange={onInputChange}
             >
-              <option value="true">Envio a domicilio</option>
-              <option value="false">Retiro en el Local</option>
+              <option value="true">🛵 Envío a domicilio</option>
+              <option value="false">🛍️ Retiro en el local</option>
             </select>
           </div>
         </div>
 
-        <div className={`mt-3 ${inputDireccion ? "" : "hidden"}`}>
-          <div className="flex gap-5 items-center">
-            <CiLocationOn className="text-white" />
-            <label className="text-white" htmlFor="direccion">
-              Direccion *
+        {/* Dirección (si aplica envío) */}
+        <div className={`${inputDireccion ? "block" : "hidden"}`}>
+          <div className="flex gap-2 items-center mb-1">
+            <CiLocationOn className="text-primary text-base font-bold" />
+            <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="direccion">
+              Dirección de Entrega *
             </label>
           </div>
 
           <Input
             type="text"
-            placeholder="Ingrese su direccion"
+            placeholder="Calle, número, piso o depto."
             ref={direccionRef as React.RefObject<HTMLInputElement>}
             name="direccion"
             value={direccion}
@@ -225,31 +232,34 @@ export const DatosCliente = () => {
           />
         </div>
 
-        <div className="mt-3">
-          <div className="flex gap-5 items-center">
-            <FiMessageSquare className="text-white" />
-            <label className="text-white" htmlFor="observaciones">
-              Observaciones (Opcional)
+        {/* Observaciones */}
+        <div>
+          <div className="flex gap-2 items-center mb-1">
+            <FiMessageSquare className="text-primary text-base" />
+            <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="observaciones">
+              Aclaraciones (Opcional)
             </label>
           </div>
 
           <textarea
             name="observaciones"
             id="observaciones"
-            placeholder="Ej. Sin Cebolla, Tocar Timbre, Dpto. A, etc."
+            rows={2}
+            placeholder="Ej. Sin salsa, tocar timbre 2B, abonar con billete de $10.000, etc."
             value={observaciones}
             onChange={onInputChange}
-            className="my-2 text-white placeholder:text-slate-400 flex bg-slate-700 w-full gap-2 border-gray-400 border rounded-sm items-center px-2"
+            className="w-full my-1 p-2.5 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 border border-neutral-300 dark:border-neutral-700/80 rounded-xl text-xs sm:text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
           ></textarea>
         </div>
 
+        {/* Vuelto si paga en efectivo */}
         {tipo_pago === "EFECTIVO" && (
-          <div>
-            <label className="text-white" htmlFor="">
-              ¿Con cuánto vas a pagar? ¡Así llevamos el cambio justo!
+          <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 p-3 rounded-2xl">
+            <label className="text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 block mb-1" htmlFor="vuelto">
+              ¿Con cuánto vas a pagar? (Para preparar tu cambio)
             </label>
             <Input
-              placeholder="0.00"
+              placeholder="Ej. 10000"
               type="number"
               value={vuelto}
               onChange={onInputChange}
@@ -258,21 +268,19 @@ export const DatosCliente = () => {
           </div>
         )}
 
-        <hr className="text-slate-700 mt-3" />
-
-        <div className="mt-5">
+        <div className="pt-2">
           <button
             type="submit"
-            disabled={validForm ? false : true}
-            className={`py-2 px-2 border border-gray-500 rounded-sm font-bold cursor-pointer w-full ${
+            disabled={!validForm}
+            className={`w-full py-3.5 px-4 rounded-2xl font-extrabold text-sm sm:text-base cursor-pointer transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2 ${
               validForm
-                ? "bg-yellow-400 text-black hover:bg-yellow-500"
-                : "bg-gray-700 text-gray-500"
+                ? "bg-primary hover:bg-primary/90 text-white shadow-primary/20"
+                : "bg-neutral-200 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 border border-neutral-300 dark:border-neutral-700 cursor-not-allowed opacity-75"
             }`}
           >
             {validForm
-              ? "Confirmar Pedido"
-              : "Complete todos los datos para continuar"}
+              ? "🚀 CONFIRMAR Y ENVIAR PEDIDO"
+              : "⚠️ Completa los datos requeridos para continuar"}
           </button>
         </div>
       </form>

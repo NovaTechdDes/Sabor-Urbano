@@ -10,7 +10,7 @@ interface Props {
 
 export const Productos = ({ value }: Props) => {
   const { startObtenerProductos, productos, loading } = useProductos();
-  console.log(productos);
+
   const { seccionActive } = useSecciones();
   const [productosFiltrados, setProductosFiltrados] = useState<Producto[]>(productos);
 

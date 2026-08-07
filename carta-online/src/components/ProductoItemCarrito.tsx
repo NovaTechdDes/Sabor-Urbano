@@ -19,29 +19,64 @@ export const ProductoItemCarrito = ({cantidad, producto:{_id, descripcion, secci
     };
 
   return (
-    <div className='flex bg-slate-800 my-5 p-2 rounded-sm gap-2'>
+    <div className='flex items-center gap-3 bg-neutral-100/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 p-3 rounded-2xl transition-all hover:border-neutral-300 dark:hover:border-neutral-700 shadow-sm'>
         
-        <div className='bg-white h-10 w-10 rounded-sm'>
-                <Image src={imgCloudinaryPath || ''} alt={descripcion} className='h-10 w-10 object-contain' width={64} height={64}/>
+        {/* Imagen del producto */}
+        <div className='relative h-14 w-14 shrink-0 rounded-xl overflow-hidden bg-neutral-200 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700'>
+            <Image 
+              src={imgCloudinaryPath || '/images/icon.png'} 
+              alt={descripcion} 
+              fill
+              sizes="56px"
+              className='object-cover'
+            />
         </div>
 
-        <div className='flex flex-col w-[230px]'>
-            <h3 className='text-sm text-white text-start'>{descripcion}</h3>
-            <p className='text-xs text-gray-400 text-start'>{seccion?.nombre}</p>
-            <p className='text-md text-yellow-400 font-bold text-start'>${precio}</p>
+        {/* Info del producto */}
+        <div className='flex flex-col flex-1 min-w-0 pr-1'>
+            <h3 className='text-sm sm:text-base font-bold text-neutral-900 dark:text-white truncate text-left uppercase tracking-wide'>{descripcion}</h3>
+            {seccion?.nombre && (
+              <span className='text-[11px] font-semibold text-primary uppercase text-left tracking-wider'>{seccion.nombre}</span>
+            )}
+            <p className='text-xs sm:text-sm font-extrabold text-neutral-600 dark:text-neutral-300 text-left mt-0.5'>
+              ${precio} <span className='text-[10px] font-normal text-neutral-500 dark:text-neutral-400'>c/u</span>
+            </p>
         </div>
 
-        <div className='ml-auto'>
-            <div className='flex gap-3'>
-                <button onClick={restarProducto} className='border active:bg-slate-300 rounded-sm h-7 text-xl w-7 flex items-center justify-center cursor-pointer border-gray-500 bg-white text-yellow-600 p-1 hover:bg-yellow-500 hover:text-black'>-</button>
-                <p className='text-white'>{cantidad}</p>
-                <button onClick={sumarProducto}
-                className='border rounded-sm h-7 text-xl w-7 active:bg-slate-300 flex items-center justify-center cursor-pointer  border-gray-500 bg-white text-yellow-600 p-1 hover:bg-yellow-500 hover:text-black'>
-                +</button>
+        {/* Controles de cantidad y precio total del item */}
+        <div className='flex flex-col items-end shrink-0 gap-1.5'>
+            <div className='flex items-center gap-2 bg-neutral-200/80 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700/80 rounded-xl p-1'>
+                <button 
+                  onClick={restarProducto} 
+                  className='h-6 w-6 rounded-lg bg-white dark:bg-neutral-700 text-neutral-800 dark:text-white font-bold text-base flex items-center justify-center cursor-pointer shadow-sm hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors active:scale-95'
+                  title="Restar"
+                >
+                  -
+                </button>
+
+                <span className='font-bold text-sm text-neutral-900 dark:text-white px-1.5 min-w-[1.25rem] text-center'>
+                  {cantidad}
+                </span>
+
+                <button 
+                  onClick={sumarProducto}
+                  className='h-6 w-6 rounded-lg bg-white dark:bg-neutral-700 text-neutral-800 dark:text-white font-bold text-base flex items-center justify-center cursor-pointer shadow-sm hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors active:scale-95'
+                  title="Sumar"
+                >
+                  +
+                </button>
             </div>
 
-            <div>
-                {seccion?.nombre === 'EMPANADAS' ? (<p className='text-white'>${(calcularPrecioEmpanadas(cantidad, precio, carta)).toFixed(2)}</p>) : (<p className='text-white'>${(precio * cantidad).toFixed(2)}</p>)}
+            <div className='text-right'>
+                {seccion?.nombre === 'EMPANADAS' ? (
+                  <p className='text-sm sm:text-base font-extrabold text-primary dark:text-secondary'>
+                    ${(calcularPrecioEmpanadas(cantidad, precio, carta)).toFixed(0)}
+                  </p>
+                ) : (
+                  <p className='text-sm sm:text-base font-extrabold text-primary dark:text-secondary'>
+                    ${(precio * cantidad).toFixed(0)}
+                  </p>
+                )}
             </div>
         </div>
     </div>

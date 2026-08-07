@@ -1,45 +1,88 @@
 import React from 'react'
 import { CgClose } from 'react-icons/cg'
-import rotiseria from '../../rotiseria.config'
+import { MdOutlineShoppingCart } from 'react-icons/md'
 import { DatosCliente } from './DatosCliente'
 import { useCarritoStore } from '@/store/useCarritoStore'
 import ResumenPedido from './ResumenPedido'
 
 export const Carrito = () => {
 
-    const { cerrar, productos} = useCarritoStore();
+    const { cerrar, productos } = useCarritoStore();
 
-    if( productos.length === 0){
+    // Estado cuando el carrito está vacío
+    if (productos.length === 0) {
       return (
-        <div className='fixed inset-0 flex items-center justify-center bg-black/80'>
-          <div className='border border-gray-500 text-center w-3xl pb-15' style={{backgroundColor: rotiseria.colorPrimario}}>
+        <div className='fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-200'>
+          <div className='relative w-full max-w-md bg-white dark:bg-[#121212] border border-neutral-200 dark:border-neutral-800 text-center rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col items-center space-y-4'>
+              
+              <button 
+                onClick={cerrar}
+                className='absolute top-4 right-4 p-2 rounded-full text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer'
+                aria-label="Cerrar modal"
+              >
+                <CgClose size={22}/>
+              </button>  
 
-              <div className='flex justify-center relative items-center my-5'>
-                <h3 className='text-yellow-400 text-xl'>Finalizar Pedido</h3>
-                <button className='absolute right-0 mx-2 hover:cursor-pointer'>
-                  <CgClose className='hover:text-white text-gray-500' onClick={cerrar} size={25}/>
-                </button>  
+              <div className='w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-2'>
+                <MdOutlineShoppingCart size={32} />
               </div>
 
-              <p className='text-slate-400 text-lg'>No hay productos en el carrito</p>
+              <div className='space-y-1'>
+                <h3 className='text-xl font-extrabold text-neutral-900 dark:text-white'>Tu carrito está vacío</h3>
+                <p className='text-xs sm:text-sm text-neutral-500 dark:text-neutral-400'>
+                  Parece que aún no has agregado ningún producto del menú.
+                </p>
+              </div>
+
+              <button 
+                onClick={cerrar}
+                className='w-full py-3 px-5 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl shadow-lg shadow-primary/20 transition-all active:scale-[0.99] cursor-pointer text-sm uppercase tracking-wide'
+              >
+                Explorar Productos
+              </button>
           </div>
         </div>
       )
     }
 
   return (
-    <div className='fixed inset-0 flex items-center justify-center bg-black/80 '>
-      <div style={{backgroundColor: rotiseria.colorPrimario}} className='border border-gray-500 rounded-lg text-center max-h-[90vh] overflow-y-auto h-screen'>
-          <div className='flex justify-center relative items-center'>
-            <button className='absolute right-0 top-2 mx-2 hover:cursor-pointer'>
-              <CgClose className='hover:text-white text-gray-500' onClick={cerrar} size={25}/>
+    <div className='fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/70 backdrop-blur-md animate-in fade-in duration-200'>
+      <div className='relative w-full max-w-5xl bg-white dark:bg-[#121212] text-neutral-900 dark:text-white border border-neutral-200 dark:border-neutral-800 rounded-3xl shadow-2xl flex flex-col max-h-[92vh] sm:max-h-[90vh] overflow-hidden'>
+          
+          {/* Header del Modal */}
+          <div className='flex items-center justify-between px-5 sm:px-8 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 shrink-0'>
+            <div className='flex items-center gap-3'>
+              <div className='p-2 rounded-xl bg-primary/10 text-primary'>
+                <MdOutlineShoppingCart size={22} />
+              </div>
+              <div>
+                <h2 className='text-base sm:text-xl font-extrabold text-neutral-900 dark:text-white uppercase tracking-wider'>
+                  Finalizar Pedido
+                </h2>
+                <p className='text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 hidden sm:block'>
+                  Revisa tu resumen y confirma tus datos para enviar la orden por WhatsApp.
+                </p>
+              </div>
+            </div>
+
+            <button 
+              onClick={cerrar}
+              className='p-2 rounded-full text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors cursor-pointer'
+              aria-label="Cerrar modal"
+            >
+              <CgClose size={24}/>
             </button>
           </div>
-          
-          <div className={`md:w-4xl w-xs p-2 rounded-sm grid grid-cols-1 md:grid-cols-2 gap-6 `}>    
-              <DatosCliente/>
 
-              <ResumenPedido/>
+          {/* Cuerpo principal en Grid (Desktop: 2 columnas / Mobile: 1 columna escroleable) */}
+          <div className='p-4 sm:p-6 md:p-8 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8'>    
+              <div className='lg:col-span-7 order-2 lg:order-1'>
+                <DatosCliente />
+              </div>
+
+              <div className='lg:col-span-5 order-1 lg:order-2'>
+                <ResumenPedido />
+              </div>
           </div>
       </div>
     </div>

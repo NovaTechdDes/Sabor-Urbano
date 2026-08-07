@@ -81,7 +81,13 @@ const ProductoCard = ({ _id, imgCloudinaryPath = '', precio, descripcion, seccio
         <div className="flex gap-2">
           {/* Imagen del producto redondeada a la izquierda */}
           <div className="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0 rounded-[1.8rem] overflow-hidden bg-neutral-900">
-            <Image src={imgCloudinaryPath ? imgCloudinaryPath : '/images/icon.png'} alt={descripcion} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+            <Image
+              src={imgCloudinaryPath ? imgCloudinaryPath : '/images/icon.png'}
+              alt={descripcion}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33v"
+            />
           </div>
 
           {/* Información del producto (Derecha) */}
