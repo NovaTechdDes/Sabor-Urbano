@@ -2,7 +2,7 @@ const rotiseria = {
     nombre: 'Sabor Urbano',
     logo: '/icon.ico',
     colorPrimario: '#0f172a',
-    whatsapp: '543456590033',
+    whatsapp: '+54 3456-590033',
     direccion: 'Av. 9 de Julio 4080, Chajari, Entre Rios',
     horarios: [
             `Lun-Sab 11:00-14:00 por la Mañana\n`,
