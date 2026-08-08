@@ -40,7 +40,7 @@ export default function Home() {
         </div>
 
         {/* Sección desde el buscador hacia abajo: responde al tema claro/oscuro */}
-        <div className="bg-white dark:bg-neutral transition-colors duration-200 min-h-screen pt-1 pb-10">
+        <div className="bg-background  transition-colors duration-200 min-h-screen pt-1 pb-10">
           <div className="mx-3 md:mx-7">
             <Buscador value={value} setValue={setValue} />
           </div>

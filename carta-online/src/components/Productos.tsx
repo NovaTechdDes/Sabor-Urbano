@@ -47,7 +47,7 @@ export const Productos = ({ value }: Props) => {
   }
 
   return (
-    <div className="grid grid-cols-1 pb-28 sm:pb-20 lg:pb-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mt-4 mx-3 md:mx-7">
+    <div className="grid grid-cols-1 pb-28 sm:pb-20 lg:pb-12 sm:grid-cols-2 lg:grid-cols-3  gap-4 sm:gap-6 mt-4 px-5 md:px-7 ">
       {productosFiltrados.map((elem) => (
         <ProductoCard key={elem?._id} {...elem} />
       ))}
