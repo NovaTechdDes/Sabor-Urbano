@@ -35,7 +35,7 @@ export const Header = () => {
       {/* Hero Banner / Sección Principal (Más Compacto) */}
       <div className="mt-3 flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Lado Izquierdo: Texto y Botones */}
-        <div className="flex-1 space-y-2">
+        <div className="flex-1 space-y-2 hidden md:block">
           <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white uppercase">Carrito Online</h2>
           <div className="flex flex-wrap gap-2 pt-1">
             <ButtonPrimary text="Productos" type="primary" action={() => {}} />

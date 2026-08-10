@@ -145,7 +145,7 @@ export const DatosCliente = () => {
               </label>
             </div>
             <select
-              className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700/80 w-full text-xs sm:text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
+              className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700/80 w-full text-base font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
               name="tipo_pago"
               id="tipo_pago"
               value={tipo_pago}
@@ -164,7 +164,7 @@ export const DatosCliente = () => {
               </label>
             </div>
             <select
-              className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700/80 w-full text-xs sm:text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
+              className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700/80 w-full text-base font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
               name="envio"
               id="envio"
               value={envio}
@@ -207,7 +207,7 @@ export const DatosCliente = () => {
             placeholder="Ej. Sin salsa, tocar timbre 2B, abonar con billete de $10.000, etc."
             value={observaciones}
             onChange={onInputChange}
-            className="w-full bg-transparent text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-xs sm:text-sm outline-none resize-none"
+            className="w-full bg-transparent text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-base outline-none resize-none"
           ></textarea>
         </div>
 

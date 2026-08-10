@@ -26,7 +26,7 @@ export const Input = ({ type, placeholder, classNameIcon = '', value, onChange, 
         type={type}
         ref={ref}
         onKeyDown={onKeyDown}
-        className={`w-full py-2.5 bg-transparent text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-sm sm:text-base outline-none ${classNameInput}`}
+        className={`w-full py-2.5 bg-transparent text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-base outline-none ${classNameInput}`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
