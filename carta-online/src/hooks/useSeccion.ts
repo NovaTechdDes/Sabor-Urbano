@@ -1,3 +1,4 @@
+import { ordenarSecciones } from "@/helpers/ordenarCategorias";
 import { Seccion, useSeccionStore } from "@/store/useSeccionStore";
 import axios from "axios";
 
@@ -18,7 +19,8 @@ export const useSecciones = () => {
         try {
             const { data } = await axios.get(`/api/secciones`);
             if(data.ok){
-                cargarSecciones(data.secciones)
+                const seccionesOrdenadas = ordenarSecciones(data.secciones);
+                cargarSecciones(seccionesOrdenadas);
             }
         } catch (error) {
             console.log(error);
