@@ -3,10 +3,11 @@ import { useCartaEmpanada } from '@/hooks/useCartaEmpanada';
 import { ListaProductos, useCarritoStore } from '@/store/useCarritoStore';
 import Image from 'next/image';
 import React from 'react';
+import { MdDelete } from 'react-icons/md';
 
 export const ProductoItemCarrito = ({ cantidad, producto: { _id, descripcion, seccion, precio, imgCloudinaryPath } }: ListaProductos) => {
   const { carta } = useCartaEmpanada();
-  const { agregarProducto, quitarProducto } = useCarritoStore();
+  const { agregarProducto, quitarProducto, eliminarDelCarrito } = useCarritoStore();
 
   const restarProducto = () => {
     quitarProducto(_id);
@@ -44,6 +45,7 @@ export const ProductoItemCarrito = ({ cantidad, producto: { _id, descripcion, se
             title="Sumar"
           >
             +
+
           </button>
         </div>
       </div>
@@ -57,6 +59,13 @@ export const ProductoItemCarrito = ({ cantidad, producto: { _id, descripcion, se
             <p className="text-sm sm:text-base font-extrabold text-primary dark:text-primary">{(precio * cantidad).toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</p>
           )}
         </div>
+          <button
+            onClick={()=>eliminarDelCarrito(_id)}
+            className="h-6 w-6 rounded-lg border border-neutral-800 dark:border-neutral-700 text-neutral-800 dark:text-white font-bold text-base flex items-center justify-center cursor-pointer shadow-sm hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors active:scale-95"
+            title="Eliminar"
+          >
+            <MdDelete size={20} color='red'/>
+          </button>
       </div>
     </div>
   );

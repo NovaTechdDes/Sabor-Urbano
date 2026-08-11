@@ -39,6 +39,7 @@ interface CarritoState {
     cerrar: () => void;
     agregarProducto: (producto: ListaProductos) => void;
     quitarProducto: (id: string) => void;
+    eliminarDelCarrito: (id: string) => void;
     vaciarCarrito: () => void;
     setCliente: (cliente: Cliente) => void;
     total: () => number;
@@ -78,6 +79,19 @@ export const useCarritoStore = create<CarritoState>((set, get) => ({
             return {productos: [...state.productos.filter(prod => prod.producto?._id !== id)]}
         })
     },
+
+    eliminarDelCarrito: (id) => {
+        set((state) => {
+            const existe = state.productos.find(prod => prod.producto?._id === id);
+            if(existe){
+                return {
+                    productos: state.productos.filter(prod => prod.producto?._id !== id)
+                };
+            };
+            return state
+        })
+    },
+
     
     vaciarCarrito: () => {
         set({productos: []})
