@@ -14,7 +14,7 @@ export const Header = () => {
     <header className="px-3 py-2 text-white">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2.5">
-          <Image src="/images/icon.png" alt="logo" width={40} height={40} className="rounded-md object-contain" />
+          <Image src="/images/icon.png" alt="logo" width={60} height={60} className="rounded-md object-contain" />
           <h1 className="text-xl font-bold text-white">{rotiseria.nombre}</h1>
         </div>
         <div className="relative cursor-pointer" onClick={abrir}>
