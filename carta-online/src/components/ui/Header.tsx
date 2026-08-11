@@ -1,13 +1,10 @@
 'use Client';
 import Image from 'next/image';
-import React from 'react';
 import rotiseria from '../../../rotiseria.config';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { useCarritoStore } from '@/store/useCarritoStore';
 import { totalProductos } from '../../helpers/totalProductos';
-import { FiClock, FiPhone, FiMapPin } from 'react-icons/fi';
-import { AiOutlineHome, AiOutlineInstagram } from 'react-icons/ai';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FiPhone, FiMapPin } from 'react-icons/fi';
 import { ButtonPrimary } from './ButtonPrimary';
 
 export const Header = () => {
@@ -35,7 +32,7 @@ export const Header = () => {
       {/* Hero Banner / Sección Principal (Más Compacto) */}
       <div className="mt-3 flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Lado Izquierdo: Texto y Botones */}
-        <div className="flex-1 space-y-2">
+        <div className="flex-1 space-y-2 hidden md:block">
           <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white uppercase">Carrito Online</h2>
           <div className="flex flex-wrap gap-2 pt-1">
             <ButtonPrimary text="Productos" type="primary" action={() => {}} />
@@ -44,7 +41,7 @@ export const Header = () => {
 
         {/* Lado Derecho: Tarjeta con Imagen de Fondo y Overlay de Horarios */}
         <div className="relative w-full md:w-80 h-36 rounded-2xl overflow-hidden shadow-lg flex items-center justify-center p-2">
-          <Image src="/slide.png" alt="Hamburguesa Sabor Urbano" fill className="object-cover" priority />
+          <Image src="/Slide.png" alt="Hamburguesa Sabor Urbano" fill className="object-cover" priority />
           {/* Overlay semitransparente color rojo/naranja */}
           <div className="absolute inset-1.5 bg-primary/75 rounded-xl backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-2 border border-white/20">
             <h3 className="text-sm font-bold text-white mb-1">Horarios de atención</h3>

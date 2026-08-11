@@ -34,14 +34,14 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full flex flex-col bg-neutral">
       <Analytics />
-      <div className="pt-0 w-full flex-1">
+      <div className="pt-0 w-full flex-1 lg:px-32">
         <div className="mx-3 md:mx-7">
           <Header />
         </div>
 
         {/* Sección desde el buscador hacia abajo: responde al tema claro/oscuro */}
         <div className="bg-background  transition-colors duration-200 min-h-screen pt-1 pb-10">
-          <div className="mx-3 md:mx-7">
+          <div className="">
             <Buscador value={value} setValue={setValue} />
           </div>
 
