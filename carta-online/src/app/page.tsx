@@ -12,6 +12,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { useVariable } from '@/hooks/useVariable';
 import { ModalPaginaCerrada } from '@/components/ModalPaginaCerrada';
 import { useCartaEmpanada } from '@/hooks/useCartaEmpanada';
+import Image from 'next/image';
 
 export default function Home() {
   const { startTraerCarta } = useCartaEmpanada();
@@ -35,12 +36,12 @@ export default function Home() {
     <main className="min-h-screen w-full flex flex-col bg-neutral">
       <Analytics />
       <div className="pt-0 w-full flex-1 lg:px-32">
-        <div className="mx-3 md:mx-7">
+        <div>
           <Header />
         </div>
 
         {/* Sección desde el buscador hacia abajo: responde al tema claro/oscuro */}
-        <div className="bg-background  transition-colors duration-200 min-h-screen pt-1 pb-10">
+        <div className="bg-background rounded-2xl  transition-colors duration-200 min-h-screen pt-1 pb-10">
           <div className="">
             <Buscador value={value} setValue={setValue} />
           </div>

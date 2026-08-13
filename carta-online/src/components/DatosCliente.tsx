@@ -102,9 +102,9 @@ export const DatosCliente = () => {
 
   return (
     <div className="flex flex-col space-y-4 text-left">
-      <div className="border-b border-neutral-200 dark:border-neutral-800 pb-3">
-        <h3 className="text-base sm:text-lg font-extrabold text-neutral-900 dark:text-white uppercase tracking-wider">Datos de Entrega (Obligatorio)</h3>
-        <p className="text-xs text-neutral-500 dark:text-neutral-400">Completa la información para que podamos procesar tu pedido.</p>
+      <div className="border-b border-neutral-800 pb-3">
+        <h3 className="text-base sm:text-lg font-extrabold text-white uppercase tracking-wider">Datos de Entrega (Obligatorio)</h3>
+        <p className="text-xs text-neutral-400">Completa la información para que podamos procesar tu pedido.</p>
       </div>
 
       <form className="w-full space-y-4" onSubmit={handleSubmit}>
@@ -140,12 +140,12 @@ export const DatosCliente = () => {
           <div>
             <div className="flex gap-2 items-center mb-1.5">
               <LuCreditCard className="text-primary text-base" />
-              <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="tipo_pago">
+              <label className="text-xs sm:text-sm font-bold text-neutral-200" htmlFor="tipo_pago">
                 Forma de Pago *
               </label>
             </div>
             <select
-              className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700/80 w-full text-base font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
+              className="bg-neutral-800 text-white p-2.5 rounded-xl border border-neutral-700/80 w-full text-base font-medium outline-none focus:ring-2 focus:ring-primary/20  transition-all cursor-pointer"
               name="tipo_pago"
               id="tipo_pago"
               value={tipo_pago}
@@ -159,12 +159,12 @@ export const DatosCliente = () => {
           <div>
             <div className="flex gap-2 items-center mb-1.5">
               <LuTruck className="text-primary text-base" />
-              <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="envio">
+              <label className="text-xs sm:text-sm font-bold text-neutral-200" htmlFor="envio">
                 Modalidad *
               </label>
             </div>
             <select
-              className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700/80 w-full text-base font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
+              className="bg-neutral-800 text-white p-2.5 rounded-xl border border-neutral-700/80 w-full text-base font-medium outline-none focus:ring-2 focus:ring-primary/20  transition-all cursor-pointer"
               name="envio"
               id="envio"
               value={envio}
@@ -180,7 +180,7 @@ export const DatosCliente = () => {
         <div className={`${inputDireccion ? 'block' : 'hidden'}`}>
           <div className="flex gap-2 items-center mb-1">
             <CiLocationOn className="text-primary text-base font-bold" />
-            <label className="text-xs sm:text-sm font-bold text-neutral-700 dark:text-neutral-200" htmlFor="direccion">
+            <label className="text-xs sm:text-sm font-bold text-neutral-200" htmlFor="direccion">
               Dirección de Entrega *
             </label>
           </div>
@@ -197,8 +197,8 @@ export const DatosCliente = () => {
         </div>
 
         {/* Observaciones */}
-        <div className="relative my-1 flex bg-neutral-100 dark:bg-neutral-800/80 gap-2.5 border border-neutral-300 dark:border-neutral-700/80 rounded-xl items-start px-3 py-2.5 transition-all focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
-          <FiMessageSquare className="text-neutral-500 dark:text-neutral-400 shrink-0 text-base mt-1" />
+        <div className="relative my-1 flex bg-neutral-800/80 gap-2.5 border border-neutral-700/80 rounded-xl items-start px-3 py-2.5 transition-all focus-within:ring-2 focus-within:ring-primary/20">
+          <FiMessageSquare className="text-neutral-400 shrink-0 text-base mt-1" />
 
           <textarea
             name="observaciones"
@@ -207,14 +207,14 @@ export const DatosCliente = () => {
             placeholder="Ej. Sin salsa, tocar timbre 2B, abonar con billete de $10.000, etc."
             value={observaciones}
             onChange={onInputChange}
-            className="w-full bg-transparent text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-base outline-none resize-none"
+            className="w-full bg-transparent text-white  text-base outline-none resize-none"
           ></textarea>
         </div>
 
         {/* Vuelto si paga en efectivo */}
         {tipo_pago === 'EFECTIVO' && (
-          <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 p-3 rounded-2xl">
-            <label className="text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 block mb-1" htmlFor="vuelto">
+          <div className="bg-primary/10 border border-primary/20 p-3 rounded-2xl">
+            <label className="text-xs sm:text-sm font-bold text-neutral-200 block mb-1" htmlFor="vuelto">
               <p>¿Con cuánto vas a pagar?</p>
               <p className="font-extralight text-xs"> ¡Asi llevamos tu cambio justo! </p>
             </label>
@@ -223,33 +223,33 @@ export const DatosCliente = () => {
         )}
 
         {/* Desglose de totales */}
-        <div className="border-t border-neutral-200 dark:border-neutral-800 pt-4 space-y-2 mt-auto">
-          <div className="flex justify-between items-center text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+        <div className="border-t border-neutral-800 pt-4 space-y-2 mt-auto">
+          <div className="flex justify-between items-center text-xs sm:text-sm text-neutral-400">
             <span>Cantidad de Productos:</span>
-            <span className="font-semibold text-neutral-900 dark:text-white">{productos.length} Item</span>
+            <span className="font-semibold text-white">{productos.length} Item</span>
           </div>
 
-          <div className="flex justify-between items-center text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+          <div className="flex justify-between items-center text-xs sm:text-sm text-neutral-400">
             <span>Subtotal:</span>
-            <span className="font-bold text-neutral-900 dark:text-white">{total().toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</span>
+            <span className="font-bold text-white">{total().toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</span>
           </div>
 
-          <div className="flex justify-between items-center pt-2 border-t border-neutral-200/60 dark:border-neutral-800/80">
-            <span className="text-base sm:text-lg font-black text-neutral-900 dark:text-white">TOTAL:</span>
-            <span className="text-xl sm:text-2xl font-black text-primary dark:text-primary">{total().toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</span>
+          <div className="flex justify-between items-center pt-2 border-t border-neutral-800/80">
+            <span className="text-base sm:text-lg font-black text-white">TOTAL:</span>
+            <span className="text-xl sm:text-2xl font-black text-primary">{total().toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</span>
           </div>
 
-          <p className="text-[11px] text-neutral-500 dark:text-neutral-400 text-start italic pt-1">* El envío a domicilio puede incluir cargos adicionales según la zona.</p>
+          <p className="text-[11px] text-neutral-400 text-start italic pt-1">* El envío a domicilio puede incluir cargos adicionales según la zona.</p>
         </div>
 
         <div className="pt-2">
           <button
             type="submit"
             disabled={!validForm}
-            className={`w-full py-3.5 px-4 rounded-2xl font-extrabold text-sm sm:text-base cursor-pointer transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2 ${
+            className={`w-full py-3.5 px-4 rounded-2xl font-extrabold text-sm sm:text-base cursor-pointer transition-all active:scale-[0.99] flex items-center justify-center gap-2 ${
               validForm
-                ? 'bg-primary hover:bg-primary/90 text-white shadow-primary/20'
-                : 'bg-neutral-200 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 border border-neutral-300 dark:border-neutral-700 cursor-not-allowed opacity-75'
+                ? 'bg-primary hover:bg-primary/90 text-white shadow-[0_0_25px_rgba(247,69,17,0.5)] hover:scale-[1.01]'
+                : 'bg-neutral-800 text-neutral-500 border border-neutral-700 cursor-not-allowed opacity-75'
             }`}
           >
             {validForm ? '🚀 CONFIRMAR Y ENVIAR PEDIDO' : '⚠️ Completa los datos requeridos para continuar'}
