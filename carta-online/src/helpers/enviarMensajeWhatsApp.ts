@@ -3,6 +3,7 @@ import rotiseria from "../../rotiseria.config";
 import { ListaProductos } from "@/store/useCarritoStore";
 
 export const enviarMensajeWhatsApp = (venta: Venta) => {
+
     const mensaje = encodeURIComponent(
     `Hola, Realice un pedido desde al carta online, ¿Podrian Confirmarlo?\n`+
     `Nombre: ${venta.cliente}\n`+
@@ -21,7 +22,6 @@ export const enviarMensajeWhatsApp = (venta: Venta) => {
     `Voy a Pagar con: ${venta.vuelto.toFixed(2)}\n\n`+
     `Total del Pedido: $${(venta.precio - venta.descuento).toFixed(2)}`
     );
-    const url = `https://wa.me/${rotiseria.whatsapp}?text=${mensaje}`;
-    console.log(venta)
+    const url = `https://wa.me/${rotiseria.whatsapp.replace('+','').replace('-','').replace(' ','')}?text=${mensaje}`;
     window.open(url, '_blank');
 };
