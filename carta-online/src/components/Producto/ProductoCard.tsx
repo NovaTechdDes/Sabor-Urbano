@@ -78,7 +78,7 @@ const ProductoCard = ({ _id, imgCloudinaryPath = '', precio, descripcion, seccio
           sinStock ? 'opacity-40 pointer-events-none' : ''
         } bg-[#181818] text-white flex flex-col items-center gap-4 rounded-[2.2rem] p-3 shadow-lg border border-neutral-800`}
       >
-        <div className="flex gap-2">
+        <div className="flex gap-2 w-full">
           {/* Imagen del producto redondeada a la izquierda */}
           <div className="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0 rounded-[1.8rem] overflow-hidden bg-neutral-900">
             <Image
