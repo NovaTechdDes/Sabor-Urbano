@@ -52,8 +52,11 @@ export const ordenarSecciones = (secciones: Seccion[]): Seccion[] => {
       return prioridadA - prioridadB;
     }
 
-    // Si tienen la misma prioridad (por ejemplo, dos secciones que van al final),
-    // se pueden ordenar alfabéticamente
-    return (a.nombre || "").localeCompare(b.nombre || "");
+    // Si tienen la misma prioridad (por ejemplo, dos secciones que van al final o promos),
+    // se ordenan con orden natural numérico ("Promo 2" antes de "Promo 10")
+    return (a.nombre || "").localeCompare(b.nombre || "", undefined, {
+      numeric: true,
+      sensitivity: "base",
+    });
   });
 };
